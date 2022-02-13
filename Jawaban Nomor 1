@@ -1,0 +1,25 @@
+<?php
+$link = mysqli_connect("localhost", "root", "", "demo");
+ 
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+ 
+// Attempt create table query execution
+$sql = "CREATE TABLE persons(
+    NIM INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    Nama VARCHAR(30) NOT NULL,
+    Jenis_Kelamin VARCHAR(9) NOT NULL,
+    Program_Studi VARCHAR(30) NOT NULL,
+    Semester INT(2) NOT NULL,
+)";
+if(mysqli_query($link, $sql)){
+    echo "Table created successfully.";
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+ 
+// Close connection
+mysqli_close($link);
+?>
